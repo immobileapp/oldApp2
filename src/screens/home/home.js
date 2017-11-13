@@ -37,13 +37,13 @@ export default class Home extends React.Component {
 
 	render() {
 		return (
-			<View style={ genericStyle.screen }>
+			<View style={ genericStyle.whiteScreen }>
 				<View style={ genericStyle.minorAurea }/>
 				<View style={ genericStyle.majorAurea }>
 					<View style={ style.parkButton }>
 						<RoundButton
 							onPress={ () => this.handleButton() }
-							label={ this.state.parked ? 'Sair' : 'Estacionar' }
+							label={ this.state.parked ? 'Deixar Vaga' : 'Estacionar' }
 						/>
 					</View>
 				</View>

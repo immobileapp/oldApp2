@@ -2,6 +2,9 @@ import React from 'react'
 import { View, Text, TouchableOpacity } from 'react-native'
 import ParkingCore from '../../core/parking/parkingCore'
 
+import genericStyle from '../../genericStyle'
+import style from './parkedStyle'
+
 import Timer from './components/timer'
 import RoundButton from '../../components/roundButton/roundButton'
 
@@ -58,13 +61,15 @@ export default class Parked extends React.Component {
 
 	render() {
 		return (
-			<View>
+			<View style={[ genericStyle.centerContent, genericStyle.redScreen ]}>
 				<Timer { ...this.state }/>
-				<RoundButton 
-					color="white"
-					label={ this.state.stopped ? 'Estacionar' : 'Deixar Vaga' }
-					onPress={ () => this.handleButton() }
-				/>
+				<View style={ style.leaveButton }>
+					<RoundButton 
+						color="white"
+						label={ this.state.stopped ? 'Estacionar' : 'Deixar Vaga' }
+						onPress={ () => this.handleButton() }
+					/>
+				</View>
 			</View>
 		)
 	}
