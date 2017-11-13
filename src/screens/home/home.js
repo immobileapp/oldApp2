@@ -1,6 +1,9 @@
 import React from 'react'
 import { View, Text, TouchableOpacity } from 'react-native'
 
+import style from './homeStyle'
+import genericStyle from '../../genericStyle'
+
 import RoundButton from '../../components/roundButton/roundButton'
 import ParkingCore from '../../core/parking/parkingCore'
 
@@ -34,15 +37,16 @@ export default class Home extends React.Component {
 
 	render() {
 		return (
-			<View>
-				<RoundButton
-					onPress={ () => this.handleParkButtonPress() }
-					label={ this.state.parked ? 'Sair' : 'Estacionar' }
-				/>
-				<TouchableOpacity 
-					onPress={ () => this.props.navigation.navigate('Parked') }>
-					<Text>Ver Timer</Text>
-				</TouchableOpacity>
+			<View style={ genericStyle.screen }>
+				<View style={ genericStyle.minorAurea }/>
+				<View style={ genericStyle.majorAurea }>
+					<View style={ style.parkButton }>
+						<RoundButton
+							onPress={ () => this.handleParkButtonPress() }
+							label={ this.state.parked ? 'Sair' : 'Estacionar' }
+						/>
+					</View>
+				</View>
 			</View>
 		)
 	}
