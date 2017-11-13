@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, Text, TouchableOpacity } from 'react-native'
+import { View } from 'react-native'
 
 import style from './homeStyle'
 import genericStyle from '../../genericStyle'

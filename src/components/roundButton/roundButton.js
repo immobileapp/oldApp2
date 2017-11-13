@@ -1,13 +1,20 @@
 import React from 'react'
-import { View, Text, TouchableHighlight } from 'react-native'
+import { View, Text, TouchableOpacity, LayoutAnimation } from 'react-native'
 
 import style from './roundButtonStyle'
 import genericStyle from '../../genericStyle'
 
 export default class RoundButton extends React.Component {
+
+	componentWillReceiveProps() {
+		LayoutAnimation.configureNext(
+			LayoutAnimation.Presets.spring
+		)
+	}
+
 	render() {
 		return (
-			<TouchableHighlight onPress={ this.props.onPress }>
+			<TouchableOpacity onPress={ this.props.onPress }>
 				<View style={[ style.button, 
 					genericStyle.centerContent,
 					this.props.color == 'white'
@@ -22,7 +29,7 @@ export default class RoundButton extends React.Component {
 						{ this.props.label.toUpperCase() }
 					</Text>
 				</View>
-			</TouchableHighlight>
+			</TouchableOpacity>
 		)
 	}
 }
