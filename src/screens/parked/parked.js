@@ -62,7 +62,9 @@ export default class Parked extends React.Component {
 	render() {
 		return (
 			<View style={[ genericStyle.centerContent, genericStyle.redScreen ]}>
-				<Timer { ...this.state }/>
+				<Timer style={ style.timer }
+					{ ...this.state }
+				/>
 				<View style={ style.leaveButton }>
 					<RoundButton 
 						color="white"
