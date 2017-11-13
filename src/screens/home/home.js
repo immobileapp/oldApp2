@@ -10,7 +10,7 @@ import ParkingCore from '../../core/parking/parkingCore'
 export default class Home extends React.Component {
 
 	static navigationOptions = {
-		header: null
+		tabBarVisible: false
 	}
 
 	state = { parked: false }

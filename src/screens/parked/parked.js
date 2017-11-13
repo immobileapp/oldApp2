@@ -8,24 +8,39 @@ import RoundButton from '../../components/roundButton/roundButton'
 export default class Parked extends React.Component {
 
 	static navigationOptions = {
-		header: null
-	}
-
-	state = {
-		timer: {
-			hour: 0,
-			minute: 0,
-			second: 0
-		}
+		tabBarVisible: false
 	}
 
 	core = new ParkingCore()
 
 	componentWillMount() {
-		this.core.getParkingDuration()
-			.then(timer => {
-				this.setState({ timer })
-			})
+		this.resetTimer()
+		this.getTimerState()
+	}
+
+	resetTimer() {
+		this.setState({
+			timer: {
+				hour: 0,
+				minute: 0,
+				second: 0
+			},
+			stopped: true
+		})
+	}
+
+	getTimerState() {
+		this.core.watchParkedState(parked => {
+			parked
+				? this.core.getParkingDuration()
+					.then(timer => {
+						this.setState({ 
+							timer: timer,
+							stopped: false
+						})
+					})
+				: this.resetTimer()
+		})
 	}
 
 	handleStop() {
@@ -35,7 +50,7 @@ export default class Parked extends React.Component {
 	render() {
 		return (
 			<View>
-				<Timer { ...this.state.timer }/>
+				<Timer { ...this.state }/>
 			</View>
 		)
 	}
