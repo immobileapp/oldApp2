@@ -1,8 +1,9 @@
 import React from 'react'
 import { View, Text, TouchableOpacity } from 'react-native'
-
 import ParkingCore from '../../core/parking/parkingCore'
+
 import Timer from './components/timer'
+import RoundButton from '../../components/roundButton/roundButton'
 
 export default class Parked extends React.Component {
 
@@ -25,6 +26,10 @@ export default class Parked extends React.Component {
 			.then(timer => {
 				this.setState({ timer })
 			})
+	}
+
+	handleStop() {
+		this.core.leave()
 	}
 
 	render() {
