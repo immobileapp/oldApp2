@@ -1,0 +1,66 @@
+import React from 'react'
+import { Text } from 'react-native'
+
+export default class Timer extends React.Component {
+
+	componentWillMount() {
+		this.updateData(this.props)
+	}
+
+	componentWillReceiveProps(nextProps) {
+		this.updateData(nextProps)
+	}
+
+	updateData(props) {
+		this.setState({
+			timer: {
+				hour: props.hour || 0,
+				minute: props.minute || 0,
+				second: props.second || 0
+			}
+		})
+	}
+
+	componentDidMount() {
+		this.count(this.state.timer)
+	}
+
+	componentDidUpdate() {
+		this.count(this.state.timer)
+	}
+
+	count(timer) {
+		clearInterval(this.interval)
+		this.interval = setInterval(() => {
+			let { hour, minute, second } = timer
+			this.calculateTimer(hour, minute, second)
+		}, 1000)
+	}
+
+	calculateTimer(hour, minute, second) {
+		second++
+
+		if(second == 60) {
+			second = 0
+			minute++
+		}
+
+		if(minute == 60) {
+			minute = 0
+			hour++
+		}
+
+		this.setState({ timer: { 
+			hour, minute, second 
+		}})
+	}
+
+	render() {
+		let { hour, minute, second } = this.state.timer
+		return (
+			<Text>
+				{ `${ hour }:${ minute }:${ second }` }
+			</Text>
+		)
+	}
+}
