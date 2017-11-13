@@ -26,7 +26,7 @@ export default class Home extends React.Component {
 		})
 	}
 
-	handleParkButtonPress() {
+	handleButton() {
 		this.state.parked
 			? this.core.leave()
 			: this.core.park()
@@ -42,7 +42,7 @@ export default class Home extends React.Component {
 				<View style={ genericStyle.majorAurea }>
 					<View style={ style.parkButton }>
 						<RoundButton
-							onPress={ () => this.handleParkButtonPress() }
+							onPress={ () => this.handleButton() }
 							label={ this.state.parked ? 'Sair' : 'Estacionar' }
 						/>
 					</View>

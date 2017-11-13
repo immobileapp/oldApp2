@@ -32,25 +32,39 @@ export default class Parked extends React.Component {
 	getTimerState() {
 		this.core.watchParkedState(parked => {
 			parked
-				? this.core.getParkingDuration()
-					.then(timer => {
-						this.setState({ 
-							timer: timer,
-							stopped: false
-						})
-					})
+				? this.retrieveTimer()
 				: this.resetTimer()
 		})
 	}
 
-	handleStop() {
-		this.core.leave()
+	retrieveTimer() {
+		this.core.getParkingDuration()
+			.then(timer => {
+				this.setState({ 
+					timer: timer,
+					stopped: false
+				})
+			})
+	}
+
+	handleButton() {
+		this.state.stopped
+			? this.core.park()
+			: this.core.leave()
+				.then(() => {
+					this.props.navigation.navigate('Home')
+				})
 	}
 
 	render() {
 		return (
 			<View>
 				<Timer { ...this.state }/>
+				<RoundButton 
+					color="white"
+					label={ this.state.stopped ? 'Estacionar' : 'Deixar Vaga' }
+					onPress={ () => this.handleButton() }
+				/>
 			</View>
 		)
 	}
