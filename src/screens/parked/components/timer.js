@@ -27,7 +27,7 @@ export default class Timer extends React.Component {
 	}
 
 	componentDidUpdate() {
-		this.handleCount()	
+		this.handleCount()
 	}
 
 	handleCount() {
@@ -47,35 +47,35 @@ export default class Timer extends React.Component {
 	calculateTimer(hour, minute, second) {
 		second++
 
-		if(second == 60) {
+		if (second == 60) {
 			second = 0
 			minute++
 		}
 
-		if(minute == 60) {
+		if (minute == 60) {
 			minute = 0
 			hour++
 		}
 
-		this.setState({ timer: { 
-			hour, minute, second 
-		}})
+		this.setState({
+			timer: {
+				hour, minute, second
+			}
+		})
 	}
 
 	formatValue(value) {
 		return value < 10
-			? '0'+value
+			? '0' + value
 			: value
 	}
 
 	render() {
 		let { hour, minute, second } = this.state.timer
 		return (
-			<Text style={ this.props.style }>
-				{ 
-					this.formatValue(hour)+':'
-					+this.formatValue(minute)+':'
-					+this.formatValue(second) 
+			<Text style={this.props.style}>
+				{
+					`${this.formatValue(hour)}:${this.formatValue(minute)}:${this.formatValue(second)}`
 				}
 			</Text>
 		)
