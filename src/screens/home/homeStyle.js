@@ -6,7 +6,8 @@ const {
 	parkButtonWidth, 
 	roundButtonHeight,
 	largeText,
-	extraLargeText
+	extraLargeText,
+	changeButtonWidth
 } = dimensions
 
 const { white } = colors
@@ -34,6 +35,19 @@ const style = StyleSheet.create({
 		fontSize: extraLargeText,
 		fontWeight: 'bold',
 		color: white
+	},
+	carChangeButtonWrapper: {
+		alignSelf: 'flex-end',
+		padding: changeButtonWidth,
+		marginRight: changeButtonWidth * -1.5,
+		marginTop: changeButtonWidth * -2.1
+	},
+	carChangeButton: {
+		width: changeButtonWidth,
+		height: changeButtonWidth,
+		backgroundColor: white,
+		borderRadius: changeButtonWidth / 2,
+		elevation: 10
 	}
 })
 

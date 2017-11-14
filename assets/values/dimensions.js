@@ -1,6 +1,8 @@
 const widthDimensions = {
 	fullWidth: 414,
-	parkButtonWidth: 256
+	parkButtonWidth: 256,
+	changeButtonWidth: 32,
+	changeIconWidth: 22
 },
 heightDimensions = {
 	fullHeight: 736,

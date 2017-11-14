@@ -1,5 +1,6 @@
 import React from 'react'
-import { View, Text } from 'react-native'
+import { View, Text, TouchableOpacity } from 'react-native'
+import ChangeIcon from '../../../../assets/footage/changeIcon'
 
 import style from '../homeStyle'
 import genericStyle from '../../../genericStyle'
@@ -15,6 +16,15 @@ export default class CarSelect extends React.Component {
 					<Text style={ style.carName }>
 						Ford Ka
 					</Text>
+					<TouchableOpacity style={ style.carChangeButtonWrapper }
+						onPress={ () => console.warn('mazome') }
+					>
+						<View style={ style.carChangeButton }>
+							<View style={ genericStyle.centerContent }>
+								<ChangeIcon/>
+							</View>
+						</View>
+					</TouchableOpacity>
 				</View>
 			</View>
 		)
