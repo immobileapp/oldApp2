@@ -39,7 +39,7 @@ const style = StyleSheet.create({
 	carChangeButtonWrapper: {
 		alignSelf: 'flex-end',
 		padding: changeButtonWidth,
-		marginRight: changeButtonWidth * -1.5,
+		marginRight: changeButtonWidth * -1.4,
 		marginTop: changeButtonWidth * -2.1
 	},
 	carChangeButton: {

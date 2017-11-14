@@ -7,6 +7,7 @@ import style from './parkedStyle'
 
 import Timer from './components/timer'
 import RoundButton from '../../components/roundButton/roundButton'
+import BackIcon from '../../../assets/footage/backIcon'
 
 export default class Parked extends React.Component {
 
@@ -61,19 +62,31 @@ export default class Parked extends React.Component {
 
 	render() {
 		return (
-			<View style={[ genericStyle.centerContent, genericStyle.redScreen ]}>
-				<Timer style={ style.timer }
-					{ ...this.state }
-				/>
-				<View style={ style.leaveButton }>
-					<RoundButton 
-						color="white"
-						label={ this.state.stopped 
-							? 'Estacionar' 
-							: 'Deixar Vaga' 
-						}
-						onPress={ () => this.handleButton() }
+			<View style={ genericStyle.redScreen }>
+				<TouchableOpacity style={ style.backButton }
+					onPress={ () => this.props.navigation.navigate('Home') }
+				>
+					<View style={ style.backIcon }>
+						<BackIcon/>
+					</View>
+					<Text style={ style.backText }>
+						voltar
+					</Text>
+				</TouchableOpacity>
+				<View style={ genericStyle.centerContent }>
+					<Timer style={ style.timer }
+						{ ...this.state }
 					/>
+					<View style={ style.leaveButton }>
+						<RoundButton 
+							color="white"
+							label={ this.state.stopped 
+								? 'Estacionar' 
+								: 'Deixar Vaga' 
+							}
+							onPress={ () => this.handleButton() }
+						/>
+					</View>
 				</View>
 			</View>
 		)
