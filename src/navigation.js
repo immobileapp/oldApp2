@@ -6,16 +6,18 @@ import Home from './screens/home/home'
 import Parked from './screens/parked/parked'
 
 export default class Navigation extends React.Component {
-	
+
 	getNavigator() {
 		return TabNavigator({
 			'Home': { screen: Home },
-			'Parked' : { screen: Parked }
-		})
+			'Parked': { screen: Parked }
+		}, {
+				swipeEnabled: true
+			})
 	}
 
 	render() {
 		const Navigator = this.getNavigator()
-		return <Navigator/>
+		return <Navigator />
 	}
 }
