@@ -68,7 +68,10 @@ export default class Parked extends React.Component {
 				<View style={ style.leaveButton }>
 					<RoundButton 
 						color="white"
-						label={ this.state.stopped ? 'Estacionar' : 'Deixar Vaga' }
+						label={ this.state.stopped 
+							? 'Estacionar' 
+							: 'Deixar Vaga' 
+						}
 						onPress={ () => this.handleButton() }
 					/>
 				</View>

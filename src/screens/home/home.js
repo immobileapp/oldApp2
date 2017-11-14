@@ -1,11 +1,12 @@
 import React from 'react'
-import { View } from 'react-native'
+import { View, Image } from 'react-native'
 
 import style from './homeStyle'
 import genericStyle from '../../genericStyle'
 
 import RoundButton from '../../components/roundButton/roundButton'
 import ParkingCore from '../../core/parking/parkingCore'
+import CarSelect from './components/carSelect'
 
 export default class Home extends React.Component {
 
@@ -38,12 +39,22 @@ export default class Home extends React.Component {
 	render() {
 		return (
 			<View style={ genericStyle.whiteScreen }>
-				<View style={ genericStyle.minorAurea }/>
+				<View style={ genericStyle.minorAurea }>
+					<View style={ genericStyle.darkOverlay }>
+						<CarSelect/>
+					</View>
+					<Image style={ style.topImg }
+						source={ require('../../../assets/footage/top-bg.png') }
+					/>
+				</View>
 				<View style={ genericStyle.majorAurea }>
 					<View style={ style.parkButton }>
 						<RoundButton
 							onPress={ () => this.handleButton() }
-							label={ this.state.parked ? 'Deixar Vaga' : 'Estacionar' }
+							label={ this.state.parked 
+								? 'Deixar Vaga' 
+								: 'Estacionar' 
+							}
 						/>
 					</View>
 				</View>

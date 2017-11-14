@@ -15,19 +15,20 @@ export default class RoundButton extends React.Component {
 	render() {
 		return (
 			<TouchableOpacity onPress={ this.props.onPress }>
-				<View style={[ style.button, 
-					genericStyle.centerContent,
+				<View style={[ style.button,
 					this.props.color == 'white'
 						? style.whiteButton
 						: style.redButton
 				]}>
-					<Text style={[ style.text, 
-						this.props.color == 'white'
-							? style.redText
-							: style.whiteText
-					]}>
-						{ this.props.label.toUpperCase() }
-					</Text>
+					<View style={ genericStyle.centerContent }>
+						<Text style={[ style.text, 
+							this.props.color == 'white'
+								? style.redText
+								: style.whiteText
+						]}>
+							{ this.props.label.toUpperCase() }
+						</Text>
+					</View>
 				</View>
 			</TouchableOpacity>
 		)

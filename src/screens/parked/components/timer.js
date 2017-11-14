@@ -74,8 +74,10 @@ export default class Timer extends React.Component {
 		let { hour, minute, second } = this.state.timer
 		return (
 			<Text style={this.props.style}>
-				{
-					`${this.formatValue(hour)}:${this.formatValue(minute)}:${this.formatValue(second)}`
+				{ 
+					this.formatValue(hour)+':'+
+					this.formatValue(minute)+':'+
+					this.formatValue(second)
 				}
 			</Text>
 		)
