@@ -1,5 +1,5 @@
 import ParkingData from '../../data/parking/parkingData'
-import getTimer from '../../utils/spreadTimer'
+import getTimer from '../../utils/spreadTimer/spreadTimer'
 
 export default class ParkingCore extends ParkingData {
 	
