@@ -1,13 +1,17 @@
 import React from 'react'
-import { View, Text, TouchableOpacity } from 'react-native'
+import { View, Image } from 'react-native'
+
+import style from './homeStyle'
+import genericStyle from '../../genericStyle'
 
 import RoundButton from '../../components/roundButton/roundButton'
 import ParkingCore from '../../core/parking/parkingCore'
+import CarSelect from './components/carSelect'
 
 export default class Home extends React.Component {
 
 	static navigationOptions = {
-		header: null
+		tabBarVisible: false
 	}
 
 	state = { parked: false }
@@ -23,7 +27,7 @@ export default class Home extends React.Component {
 		})
 	}
 
-	handleParkButtonPress() {
+	handleButton() {
 		this.state.parked
 			? this.core.leave()
 			: this.core.park()
@@ -34,15 +38,26 @@ export default class Home extends React.Component {
 
 	render() {
 		return (
-			<View>
-				<RoundButton
-					onPress={ () => this.handleParkButtonPress() }
-					label={ this.state.parked ? 'Sair' : 'Estacionar' }
-				/>
-				<TouchableOpacity 
-					onPress={ () => this.props.navigation.navigate('Parked') }>
-					<Text>Ver Timer</Text>
-				</TouchableOpacity>
+			<View style={ genericStyle.whiteScreen }>
+				<View style={ genericStyle.minorAurea }>
+					<View style={ genericStyle.darkOverlay }>
+						<CarSelect/>
+					</View>
+					<Image style={ style.topImg }
+						source={ require('../../../assets/footage/top-bg.png') }
+					/>
+				</View>
+				<View style={ genericStyle.majorAurea }>
+					<View style={ style.parkButton }>
+						<RoundButton
+							onPress={ () => this.handleButton() }
+							label={ this.state.parked 
+								? 'Deixar Vaga' 
+								: 'Estacionar' 
+							}
+						/>
+					</View>
+				</View>
 			</View>
 		)
 	}

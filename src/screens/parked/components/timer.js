@@ -14,19 +14,26 @@ export default class Timer extends React.Component {
 	updateData(props) {
 		this.setState({
 			timer: {
-				hour: props.hour || 0,
-				minute: props.minute || 0,
-				second: props.second || 0
-			}
+				hour: props.timer.hour || 0,
+				minute: props.timer.minute || 0,
+				second: props.timer.second || 0
+			},
+			stopped: props.stopped
 		})
 	}
 
 	componentDidMount() {
-		this.count(this.state.timer)
+		this.handleCount()
 	}
 
 	componentDidUpdate() {
-		this.count(this.state.timer)
+		this.handleCount()
+	}
+
+	handleCount() {
+		!this.state.stopped
+			? this.count(this.state.timer)
+			: clearInterval(this.interval)
 	}
 
 	count(timer) {
@@ -40,26 +47,38 @@ export default class Timer extends React.Component {
 	calculateTimer(hour, minute, second) {
 		second++
 
-		if(second == 60) {
+		if (second == 60) {
 			second = 0
 			minute++
 		}
 
-		if(minute == 60) {
+		if (minute == 60) {
 			minute = 0
 			hour++
 		}
 
-		this.setState({ timer: { 
-			hour, minute, second 
-		}})
+		this.setState({
+			timer: {
+				hour, minute, second
+			}
+		})
+	}
+
+	formatValue(value) {
+		return value < 10
+			? '0' + value
+			: value
 	}
 
 	render() {
 		let { hour, minute, second } = this.state.timer
 		return (
-			<Text>
-				{ `${ hour }:${ minute }:${ second }` }
+			<Text style={this.props.style}>
+				{ 
+					this.formatValue(hour)+':'+
+					this.formatValue(minute)+':'+
+					this.formatValue(second)
+				}
 			</Text>
 		)
 	}
