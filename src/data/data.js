@@ -2,17 +2,33 @@ import firebase from 'react-native-firebase'
 
 export default class Data {
 
-	constructor() {
-		this.database = firebase.database()
-		this.status = 'on'
+	firestore = firebase.firestore()
+	paginations = {}
+
+	doc(path, auth) {
+		return this.firestore.doc(this.checkAuth(path, auth))
 	}
 
-	ref(ref, isAuthed) {
-		return this.database
-			.ref(isAuthed ? 'uid'+ref : ref)
+	collection(path, auth) {
+		return this.firestore.collection(this.checkAuth(path, auth))
 	}
 
-	setOff() {
-		this.status = 'off'
+	checkAuth(path, auth) {
+		return auth
+			? `users/guWSjnpN8dWGl4KqNNee/${ path }`
+			: path
+	}
+
+	formatCollection(snap) {
+		let list = []
+
+		snap.forEach(item => {
+			list.push({
+				key: item.id,
+				...item.data()
+			})
+		})
+
+		return list
 	}
 }
