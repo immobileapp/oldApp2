@@ -1,3 +1,4 @@
+import PushNotification from 'react-native-push-notification'
 import ParkingData from '../../data/parking/parkingData'
 import getTimer from '../../utils/spreadTimer/spreadTimer'
 
@@ -23,5 +24,17 @@ export default class ParkingCore extends ParkingData {
 
 	calculateParkingDuration(time) {
 		return parseInt(new Date().getTime()) - time
+	}
+
+	sendParkingNotification(id, message) {
+		PushNotification.localNotification({
+			id,
+			message,
+			title: 'Você está estacionado!'
+		})
+	}
+
+	dismissParkingNotification(id) {
+		PushNotification.cancelLocalNotifications({ id })
 	}
 }

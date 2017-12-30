@@ -1,6 +1,7 @@
 import React from 'react'
 import { View, Text, TouchableOpacity } from 'react-native'
 import ParkingCore from '../../core/parking/parkingCore'
+import formatTimer from '../../utils/formatTimer/formatTimer'
 
 import genericStyle from '../../genericStyle'
 import style from './parkedStyle'
@@ -22,6 +23,14 @@ export default class Parked extends React.Component {
 		this.getTimerState()
 	}
 
+	getTimerState() {
+		this.core.watchParkedState(parked => {
+			parked
+				? this.setAsParked(parked)
+				: this.resetTimer()
+		})
+	}
+
 	resetTimer() {
 		this.setState({
 			timer: {
@@ -30,14 +39,6 @@ export default class Parked extends React.Component {
 				second: 0
 			},
 			stopped: true
-		})
-	}
-
-	getTimerState() {
-		this.core.watchParkedState(parked => {
-			parked
-				? this.setAsParked(parked)
-				: this.resetTimer()
 		})
 	}
 
@@ -74,6 +75,7 @@ export default class Parked extends React.Component {
 				<View style={ genericStyle.centerContent }>
 					<Timer style={ style.timer }
 						{ ...this.state }
+						bindTimer={ timer => this.setState({ timer }) }
 					/>
 					<View style={ style.leaveButton }>
 						<RoundButton 
