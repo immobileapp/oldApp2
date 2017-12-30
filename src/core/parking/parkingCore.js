@@ -2,30 +2,23 @@ import ParkingData from '../../data/parking/parkingData'
 import getTimer from '../../utils/spreadTimer/spreadTimer'
 
 export default class ParkingCore extends ParkingData {
-	
 	park() {
-		return this.updateParkedState({
+		return this.createNewParking({
 			isParked: true,
-			lastParkedTime: new Date().getTime(),
-			lastParkingDuration: 0
+			arrivedAt: new Date().getTime(),
+			duration: 0
 		})
 	}
 
-	leave() {
-		return this.getLastParkedTime()
-			.then(time => {
-				this.updateParkedState({
-					isParked: false,
-					lastParkingDuration: this.calculateParkingDuration(time)
-				})
-			})
+	leave(parking) {
+		return this.updateParkedState(parking.key, {
+			isParked: false,
+			duration: this.calculateParkingDuration(parking.arrivedAt)
+		})
 	}
 
-	getParkingDuration() {
-		return this.getLastParkedTime()
-			.then(time =>
-				getTimer(this.calculateParkingDuration(time))
-			)
+	getParkedTimeGap(arriveTime) {
+		return getTimer(this.calculateParkingDuration(arriveTime))
 	}
 
 	calculateParkingDuration(time) {

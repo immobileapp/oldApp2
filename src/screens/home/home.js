@@ -14,7 +14,7 @@ export default class Home extends React.Component {
 		tabBarVisible: false
 	}
 
-	state = { parked: false }
+	state = {}
 	core = new ParkingCore()
 
 	componentWillMount() {
@@ -29,7 +29,7 @@ export default class Home extends React.Component {
 
 	handleButton() {
 		this.state.parked
-			? this.core.leave()
+			? this.core.leave(this.state.parked)
 			: this.core.park()
 				.then(() => {
 					this.props.navigation.navigate('Parked')

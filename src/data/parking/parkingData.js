@@ -2,20 +2,21 @@ import Data from '../data'
 
 export default class ParkingData extends Data {
 	watchParkedState(callback) {
-		return this.ref('state/isParked')
-			[this.status]('value', snap => {
-				callback(snap.val())
+		return this.collection('historico', true)
+			.where('isParked', '==', true)
+			.onSnapshot(snap => {
+				let result = this.formatCollection(snap)
+				callback(result.length == 0 ? null : result[0])
 			})
 	}
 
-	getLastParkedTime() {
-		return this.ref('state/lastParkedTime')
-			.once('value')
-			.then(snap => snap.val())
+	createNewParking(value) {
+		return this.collection('historico', true)
+			.add(value)
 	}
 
-	updateParkedState(values) {
-		return this.ref('state')
-			.update(values)
+	updateParkedState(key, value) {
+		return this.doc(`historico/${ key }`, true)
+			.update(value)
 	}
 }
