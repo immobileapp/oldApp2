@@ -31,6 +31,8 @@ export default class ParkingCore extends ParkingData {
 			id: this.getNotificationId(id),
 			title: 'Você está estacionado!',
 			vibrate: false,
+			color: 'red',
+			actions: '["Deixar Vaga"]',
 			playSound,
 			message
 		})
