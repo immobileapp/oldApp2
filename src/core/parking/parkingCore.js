@@ -26,15 +26,21 @@ export default class ParkingCore extends ParkingData {
 		return parseInt(new Date().getTime()) - time
 	}
 
-	sendParkingNotification(id, message) {
+	sendParkingNotification(id, message, playSound) {
 		PushNotification.localNotification({
-			id,
-			message,
-			title: 'Você está estacionado!'
+			id: this.getNotificationId(id),
+			title: 'Você está estacionado!',
+			vibrate: false,
+			playSound,
+			message
 		})
 	}
 
-	dismissParkingNotification(id) {
-		PushNotification.cancelLocalNotifications({ id })
+	dismissParkingNotification() {
+		PushNotification.cancelAllLocalNotifications()
+	}
+
+	getNotificationId(id) {
+		return id.replace(/[^0-9]/g, '')
 	}
 }
