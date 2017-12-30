@@ -8,6 +8,8 @@ import RoundButton from '../../components/roundButton/roundButton'
 import ParkingCore from '../../core/parking/parkingCore'
 import CarSelect from './components/carSelect'
 
+import PushNotification from 'react-native-push-notification'
+
 export default class Home extends React.Component {
 
 	static navigationOptions = {
@@ -19,6 +21,13 @@ export default class Home extends React.Component {
 
 	componentWillMount() {
 		this.getParkedState()
+	}
+
+	componentDidMount() {
+		PushNotification.localNotification({
+			message: 'Funfo parça',
+			vibrate: true
+		})
 	}
 
 	getParkedState() {
