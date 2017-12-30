@@ -2,7 +2,7 @@ import Data from '../data'
 
 export default class ParkingData extends Data {
 	watchParkedState(callback) {
-		return this.collection('historico', true)
+		return this.collection('history', true)
 			.where('isParked', '==', true)
 			.onSnapshot(snap => {
 				let result = this.formatCollection(snap)
@@ -11,12 +11,12 @@ export default class ParkingData extends Data {
 	}
 
 	createNewParking(value) {
-		return this.collection('historico', true)
+		return this.collection('history', true)
 			.add(value)
 	}
 
 	updateParkedState(key, value) {
-		return this.doc(`historico/${ key }`, true)
+		return this.doc(`history/${ key }`, true)
 			.update(value)
 	}
 }

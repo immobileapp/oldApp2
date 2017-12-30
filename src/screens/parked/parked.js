@@ -1,14 +1,8 @@
 import React from 'react'
-import { View, Text, TouchableOpacity } from 'react-native'
+import ParkedView from './parkedView'
+
 import ParkingCore from '../../core/parking/parkingCore'
 import formatTimer from '../../utils/formatTimer/formatTimer'
-
-import genericStyle from '../../genericStyle'
-import style from './parkedStyle'
-
-import Timer from './components/timer'
-import RoundButton from '../../components/roundButton/roundButton'
-import BackIcon from '../../../assets/footage/backIcon'
 
 export default class Parked extends React.Component {
 
@@ -82,34 +76,11 @@ export default class Parked extends React.Component {
 
 	render() {
 		return (
-			<View style={ genericStyle.redScreen }>
-				<TouchableOpacity style={ style.backButton }
-					onPress={ () => this.props.navigation.navigate('Home') }
-				>
-					<View style={ style.backIcon }>
-						<BackIcon/>
-					</View>
-					<Text style={ style.backText }>
-						voltar
-					</Text>
-				</TouchableOpacity>
-				<View style={ genericStyle.centerContent }>
-					<Timer style={ style.timer }
-						{ ...this.state }
-						bindTimer={ timer => this.setState({ timer }) }
-					/>
-					<View style={ style.leaveButton }>
-						<RoundButton 
-							color="white"
-							label={ this.state.stopped 
-								? 'Estacionar' 
-								: 'Deixar Vaga' 
-							}
-							onPress={ () => this.handleButton() }
-						/>
-					</View>
-				</View>
-			</View>
+			<ParkedView
+				{ ...this.props }
+				{ ...this.state }
+				bindTimer={ timer => this.setState({ timer })}
+			/>
 		)
 	}
 }
