@@ -1,4 +1,6 @@
+import { DeviceEventEmitter } from 'react-native'
 import PushNotification from 'react-native-push-notification'
+
 import ParkingData from '../../data/parking/parkingData'
 import getTimer from '../../utils/spreadTimer/spreadTimer'
 
@@ -35,6 +37,16 @@ export default class ParkingCore extends ParkingData {
 			actions: '["Deixar Vaga"]',
 			playSound,
 			message
+		})
+	}
+
+	registerNotificationActionResponse(parking) {
+		PushNotification.registerNotificationActions(['Deixar Vaga'])
+		DeviceEventEmitter.addListener('notificationActionReceived', e => {
+			const info = JSON.parse(e.dataJSON)
+
+			info.action == 'Deixar Vaga' &&
+				this.leave(parking)
 		})
 	}
 

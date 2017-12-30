@@ -24,6 +24,9 @@ export default class Home extends React.Component {
 	getParkedState() {
 		this.core.watchParkedState(parked => {
 			this.setState({ parked })
+			
+			parked && 
+				this.core.registerNotificationActionResponse(parked)
 		})
 	}
 

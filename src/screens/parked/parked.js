@@ -67,6 +67,8 @@ export default class Parked extends React.Component {
 			timer: this.core.getParkedTimeGap(current.arrivedAt),
 			stopped: false
 		})
+
+		this.core.registerNotificationActionResponse(current)
 	}
 
 	handleButton() {
