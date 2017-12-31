@@ -27,10 +27,12 @@ export default class Home extends React.Component {
 	handleButton() {
 		this.state.parked
 			? this.core.leave(this.state.parked)
-			: this.core.park()
-				.then(() => {
-					this.props.navigation.navigate('Parked')
-				})
+			: this.handleParking()
+	}
+
+	handleParking() {
+		this.core.park()
+		this.props.navigation.navigate('Parked')
 	}
 
 	render() {
