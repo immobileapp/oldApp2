@@ -2,7 +2,7 @@ import Data from '../data'
 
 export default class ParkingData extends Data {
 	watchParkedState(callback) {
-		return this.collection('history', true)
+		this.collection('history', true)
 			.where('isParked', '==', true)
 			.onSnapshot(snap => {
 				let result = this.formatCollection(snap)
@@ -20,11 +20,14 @@ export default class ParkingData extends Data {
 			.update(value)
 	}
 
-	watchMonthHistory(month, callback) {
-		this.collection('history', true)
-			.where('arrivedAt', '>', month)
-			.onSnapshot(data => {
-				callback(this.formatCollection(data))
-			})
+	watchHistory(callback, minDate, maxDate) {
+		let ref = this.collection('history', true)
+
+		minDate && ref.where('arrivedAt', '>=', minDate)
+		maxDate && ref.where('arrivedAt', '<=', maxDate)
+
+		ref.onSnapshot(data => {
+			callback(this.formatCollection(data))
+		})
 	}
 }
