@@ -7,14 +7,12 @@ import style from '../../homeStyle'
 export default class StatisticsView extends React.Component {
 
 	getHours() {
-		let { hour, minute, second } = this.props.time,
-			hours
+		let { hour, minute, second } = this.props.time
 
-		hours = second != 0 && `${ second }s`
-		hours = minute != 0 && `${ minute }m`
-		hours = hour != 0 && `${ hour }h`
-
-		return hours
+		if (hour != 0) 	 return `${ hour }h`
+		if (minute != 0) return `${ minute }m`
+		
+		return `${ second }s`
 	}
 
 	render() {
@@ -36,7 +34,7 @@ export default class StatisticsView extends React.Component {
 							source={ require('../../../../../assets/footage/coin.png') }
 						/>
 						<Text style={ style.statsText }>
-							{ this.props.spent }
+							{ this.props.money }
 						</Text>
 					</View>
 				</View>

@@ -1,7 +1,6 @@
 import React from 'react'
 import StatisticsView from './statisticsView'
 import StatisticsCore from '../../../../core/statistics/statisticsCore'
-import getTimer from '../../../../utils/spreadTimer/spreadTimer'
 
 export default class Statistics extends React.Component {
 
@@ -14,7 +13,7 @@ export default class Statistics extends React.Component {
 
 	fetchData() {
 		this.core.watchCurrentMonthStats(stats => {
-			console.error(stats)
+			this.setState({ stats })
 		})
 	}
 
