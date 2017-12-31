@@ -1,10 +1,22 @@
 import React from 'react'
 import { View, Image, Text } from 'react-native'
 
-import genericStyle from '../../../genericStyle'
-import style from '../homeStyle'
+import genericStyle from '../../../../genericStyle'
+import style from '../../homeStyle'
 
-export default class Statistics extends React.Component {
+export default class StatisticsView extends React.Component {
+
+	getHours() {
+		let { hour, minute, second } = this.props.time,
+			hours
+
+		hours = second != 0 && `${ second }s`
+		hours = minute != 0 && `${ minute }m`
+		hours = hour != 0 && `${ hour }h`
+
+		return hours
+	}
+
 	render() {
 		return (
 			<View style={ style.statistics }>
@@ -12,19 +24,19 @@ export default class Statistics extends React.Component {
 					<View style={ style.inf }>
 						<Image 
 							style={ style.statsIcon }
-							source={ require('../../../../assets/footage/watch.png') }
+							source={ require('../../../../../assets/footage/watch.png') }
 						/>
 						<Text style={ style.statsText }>
-							126 h
+							{ this.props.time && this.getHours() }
 						</Text>
 					</View>
 					<View style={ style.inf }>
 						<Image 
 							style={ style.statsIcon }
-							source={ require('../../../../assets/footage/coin.png') }
+							source={ require('../../../../../assets/footage/coin.png') }
 						/>
 						<Text style={ style.statsText }>
-							R$ 252
+							{ this.props.spent }
 						</Text>
 					</View>
 				</View>

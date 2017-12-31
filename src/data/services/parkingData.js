@@ -19,4 +19,12 @@ export default class ParkingData extends Data {
 		return this.doc(`history/${ key }`, true)
 			.update(value)
 	}
+
+	watchMonthHistory(month, callback) {
+		this.collection('history', true)
+			.where('arrivedAt', '>', month)
+			.onSnapshot(data => {
+				callback(this.formatCollection(data))
+			})
+	}
 }
