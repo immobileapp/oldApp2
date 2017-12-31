@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, Image } from 'react-native'
+import { View, Image, Text } from 'react-native'
 
 import CarSelect from './components/carSelect'
 import RoundButton from '../../components/roundButton/roundButton'
@@ -23,11 +23,27 @@ export default class HomeView extends React.Component {
 					<View style={ style.parkButton }>
 						<RoundButton
 							onPress={ this.props.handleButton }
-							label={ this.props.parked 
-								? 'Deixar Vaga' 
-								: 'Estacionar' 
+							label={ 
+								this.props.parked 
+									? 'Deixar Vaga' 
+									: 'Estacionar' 
 							}
 						/>
+					</View>
+					<View style={ style.greetings }>
+						<Text style={ style.greetingsText }>
+							Olá, seja&nbsp;
+							<Text style={[ style.greetingsText, style.greetingsTextBold ]}>
+								bem vindo!
+							</Text>
+						</Text>
+						<Text style={[ style.greetingsText, style.greetingsTextLight ]}>
+							Neste&nbsp;
+							<Text style={[ style.greetingsText, style.greetingsTextBold ]}>
+								mês
+							</Text>
+							, você ja usou:
+						</Text>
 					</View>
 				</View>
 			</View>

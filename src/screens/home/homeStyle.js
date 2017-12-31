@@ -7,10 +7,12 @@ const {
 	roundButtonHeight,
 	largeText,
 	extraLargeText,
-	changeButtonWidth
+	changeButtonWidth,
+	sideMargin,
+	mediumText
 } = dimensions
 
-const { white } = colors
+const { white, darkGrey } = colors
 
 const style = StyleSheet.create({
 	topImg: {
@@ -48,6 +50,22 @@ const style = StyleSheet.create({
 		backgroundColor: white,
 		borderRadius: changeButtonWidth / 2,
 		elevation: 10
+	},
+	greetings: {
+		display: 'flex',
+		marginTop: roundButtonHeight / 2,
+		marginBottom: roundButtonHeight / 4,
+		alignItems: 'center'
+	},
+	greetingsText: {
+		fontSize: mediumText,
+		color: darkGrey
+	},
+	greetingsTextBold: {
+		fontWeight: 'bold'
+	},
+	greetingsTextLight: {
+		fontWeight: '100'
 	}
 })
 
