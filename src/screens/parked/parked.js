@@ -28,10 +28,10 @@ export default class Parked extends React.Component {
 			timer = formatTimer(this.state.timer)
 
 		!this.state.stopped
-			? this.core.sendParkingNotification(key, timer, this.justStarted)
+			? this.core.sendParkingNotification(key, timer, this.notNotified)
 			: this.core.dismissParkingNotification()
 
-		this.justStarted = false
+		this.notNotified = false
 	}
 
 	getTimerState() {
@@ -43,7 +43,7 @@ export default class Parked extends React.Component {
 	}
 
 	resetTimer() {
-		this.justStarted = true
+		this.notNotified = true
 		
 		this.setState({
 			timer: {
@@ -80,6 +80,7 @@ export default class Parked extends React.Component {
 				{ ...this.props }
 				{ ...this.state }
 				bindTimer={ timer => this.setState({ timer })}
+				handleButton={ () => this.handleButton() }
 			/>
 		)
 	}

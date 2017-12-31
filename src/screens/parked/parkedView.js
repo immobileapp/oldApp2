@@ -35,7 +35,7 @@ export default class ParkedView extends React.Component {
 									? 'Estacionar' 
 									: 'Deixar Vaga' 
 							}
-							onPress={ () => this.handleButton() }
+							onPress={ this.props.handleButton }
 						/>
 					</View>
 				</View>
