@@ -12,7 +12,8 @@ heightDimensions = {
 	roundButtonHeight: 64,
 	backIconTraceHeight: 11,
 	backIconPadding: 8,
-	headerHeight: 62
+	headerHeight: 62,
+	homeDefaultMarginHeight: 28
 },
 textDimensions = {
 	normalText: 16,

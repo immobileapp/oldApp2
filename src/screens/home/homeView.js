@@ -1,8 +1,10 @@
 import React from 'react'
 import { View, Image, Text } from 'react-native'
 
-import CarSelect from './components/carSelect'
 import RoundButton from '../../components/roundButton/roundButton'
+import CarSelect from './components/carSelect'
+import Greetings from './components/greetings'
+import Statistics from './components/statistics'
 
 import style from './homeStyle'
 import genericStyle from '../../genericStyle'
@@ -30,21 +32,8 @@ export default class HomeView extends React.Component {
 							}
 						/>
 					</View>
-					<View style={ style.greetings }>
-						<Text style={ style.greetingsText }>
-							Olá, seja&nbsp;
-							<Text style={[ style.greetingsText, style.greetingsTextBold ]}>
-								bem vindo!
-							</Text>
-						</Text>
-						<Text style={[ style.greetingsText, style.greetingsTextLight ]}>
-							Neste&nbsp;
-							<Text style={[ style.greetingsText, style.greetingsTextBold ]}>
-								mês
-							</Text>
-							, você ja usou:
-						</Text>
-					</View>
+					<Greetings/>
+					<Statistics/>
 				</View>
 			</View>
 		)
