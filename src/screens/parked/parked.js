@@ -68,10 +68,12 @@ export default class Parked extends React.Component {
 	handleButton() {
 		this.state.stopped
 			? this.core.park()
-			: this.core.leave(this.state.parked)
-				.then(() => {
-					this.props.navigation.navigate('Home')
-				})
+			: this.handleLeave()
+	}
+
+	handleLeave() {
+		this.core.leave(this.state.parked)
+		this.props.navigation.navigate('Home')
 	}
 
 	render() {
