@@ -8,5 +8,6 @@ target 'immobile' do
   # Pods for immobile
   
   pod 'Firebase/Database'
+  pod 'Firebase/Firestore'
   pod 'Firebase/Core'
 end
