@@ -17,23 +17,6 @@ export default class Parked extends React.Component {
 		this.getTimerState()
 	}
 
-	componentDidUpdate() {
-		this.handleNotification()
-	}
-
-	handleNotification() {
-		if(!this.state.parked) return
-
-		let { key } = this.state.parked,
-			timer = formatTimer(this.state.timer)
-
-		!this.state.stopped
-			? this.core.sendParkingNotification(key, timer, this.notNotified)
-			: this.core.dismissParkingNotification()
-
-		this.notNotified = false
-	}
-
 	getTimerState() {
 		this.core.watchParkedState(parked => {
 			parked
@@ -43,8 +26,6 @@ export default class Parked extends React.Component {
 	}
 
 	resetTimer() {
-		this.notNotified = true
-		
 		this.setState({
 			timer: {
 				hour: 0,

@@ -11,8 +11,13 @@ export default class ParkingData extends Data {
 	}
 
 	createNewParking(value) {
-		return this.collection('history', true)
-			.add(value)
+		let ref = this.collection('history', true).doc()
+			id = ref.id
+
+		return ref.set(value).then(() => {
+			value.key = id
+			return value
+		})
 	}
 
 	updateParkedState(key, value) {
