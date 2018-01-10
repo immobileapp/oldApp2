@@ -12,8 +12,8 @@ export default class Navigation extends React.Component {
 			'Home': { screen: Home },
 			'Parked': { screen: Parked }
 		}, {
-				swipeEnabled: true
-			})
+			swipeEnabled: true
+		})
 	}
 
 	render() {

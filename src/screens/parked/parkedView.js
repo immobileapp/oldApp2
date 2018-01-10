@@ -7,11 +7,12 @@ import style from './parkedStyle'
 import Timer from './components/timer'
 import RoundButton from '../../components/roundButton/roundButton'
 import BackIcon from '../../../assets/footage/backIcon'
+import RedBackground from '../../components/redBackground/redBackground'
 
 export default class ParkedView extends React.Component {
 	render() {
 		return (
-			<View style={ genericStyle.redScreen }>
+			<RedBackground>
 				<TouchableOpacity style={ style.backButton }
 					onPress={ () => this.props.navigation.navigate('Home') }
 				>
@@ -39,7 +40,7 @@ export default class ParkedView extends React.Component {
 						/>
 					</View>
 				</View>
-			</View>
+			</RedBackground>
 		)
 	}
 }
