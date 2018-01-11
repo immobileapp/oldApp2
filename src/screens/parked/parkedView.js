@@ -14,7 +14,7 @@ export default class ParkedView extends React.Component {
 		return (
 			<RedBackground>
 				<TouchableOpacity style={ style.backButton }
-					onPress={ () => this.props.navigation.navigate('Home') }
+					onPress={ () => this.props.navigation.navigate('Main') }
 				>
 					<View style={ style.backIcon }>
 						<BackIcon/>
