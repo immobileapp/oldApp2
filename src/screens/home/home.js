@@ -1,46 +1,43 @@
 import React from 'react'
+
 import HomeView from './homeView'
 import ParkingCore from '../../core/parking/parkingCore'
 
 export default class Home extends React.Component {
+  state = {}
+  core = new ParkingCore()
 
-	static navigationOptions = {
-		tabBarVisible: false
-	}
+  componentWillMount() {
+    this.getParkedState()
+  }
 
-	state = {}
-	core = new ParkingCore()
+  getParkedState() {
+    this.core.watchParkedState(parked => {
+      this.setState({ parked })
 
-	componentWillMount() {
-		this.getParkedState()
-	}
+      parked &&
+        this.core.registerNotificationActionResponse(parked)
+    })
+  }
 
-	getParkedState() {
-		this.core.watchParkedState(parked => {
-			this.setState({ parked })
-			
-			parked && 
-				this.core.registerNotificationActionResponse(parked)
-		})
-	}
+  handleButton() {
+    this.state.parked
+      ? this.core.leave(this.state.parked)
+      : this.handleParking()
+  }
 
-	handleButton() {
-		this.state.parked
-			? this.core.leave(this.state.parked)
-			: this.handleParking()
-	}
+  handleParking() {
+    this.core.park()
+    this.props.navigation.navigate('Parked')
+  }
 
-	handleParking() {
-		this.core.park()
-		this.props.navigation.navigate('Parked')
-	}
-
-	render() {
-		return (
-			<HomeView
-				{ ...this.state }
-				handleButton={ () => this.handleButton() }
-			/>
-		)
-	}
+  render() {
+    return (
+      <HomeView
+        { ...this.state }
+        handleButton={() => this.handleButton()}
+        navigation={this.props.navigation}
+      />
+    )
+  }
 }

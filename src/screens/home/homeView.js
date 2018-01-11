@@ -10,32 +10,32 @@ import style from './homeStyle'
 import genericStyle from '../../genericStyle'
 
 export default class HomeView extends React.Component {
-	render() {
-		return (
-			<View style={ genericStyle.whiteScreen }>
-				<View style={ genericStyle.minorAurea }>
-					<View style={ genericStyle.darkOverlay }>
-						<CarSelect/>
-					</View>
-					<Image style={ style.topImg }
-						source={ require('../../../assets/footage/top-bg.png') }
-					/>
-				</View>
-				<View style={ genericStyle.majorAurea }>
-					<View style={ style.parkButton }>
-						<RoundButton
-							onPress={ this.props.handleButton }
-							label={ 
-								this.props.parked 
-									? 'Deixar Vaga' 
-									: 'Estacionar' 
-							}
-						/>
-					</View>
-					<Greetings/>
-					<Statistics/>
-				</View>
-			</View>
-		)
-	}
+  render() {
+    return (
+      <View style={genericStyle.whiteScreen}>
+        <View style={genericStyle.minorAurea}>
+          <View style={genericStyle.darkOverlay}>
+            <CarSelect />
+          </View>
+          <Image style={style.topImg}
+            source={require('../../../assets/footage/top-bg.png')}
+          />
+        </View>
+        <View style={genericStyle.majorAurea}>
+          <View style={style.parkButton}>
+            <RoundButton
+              onPress={this.props.handleButton}
+              label={
+                this.props.parked
+                  ? 'Deixar Vaga'
+                  : 'Estacionar'
+              }
+            />
+          </View>
+          <Greetings />
+          <Statistics navigation={this.props.navigation} />
+        </View>
+      </View>
+    )
+  }
 }

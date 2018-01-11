@@ -1,27 +1,34 @@
 import React from 'react'
+
 import StatisticsView from './statisticsView'
 import StatisticsCore from '../../../../core/statistics/statisticsCore'
 
 export default class Statistics extends React.Component {
 
-	state = {}
-	core = new StatisticsCore()
+  state = {}
+  core = new StatisticsCore()
 
-	componentDidMount() {
-		this.fetchData()
-	}
+  componentDidMount() {
+    this.fetchData()
+  }
 
-	fetchData() {
-		this.core.watchCurrentMonthStats(stats => {
-			this.setState({ stats })
-		})
-	}
+  fetchData() {
+    this.core.watchCurrentMonthStats(stats => {
+      this.setState({ stats })
+    })
+  }
 
-	render() {
-		return (
-			<StatisticsView
-				{ ...this.state.stats }
-			/>
-		)
-	}
+  openHistory() {
+    this.props.navigation.navigate('History')
+  }
+
+  render() {
+    return (
+      <StatisticsView
+        { ...this.props }
+        { ...this.state.stats }
+        openHistory={() => this.openHistory()}
+      />
+    )
+  }
 }

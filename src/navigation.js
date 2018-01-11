@@ -1,23 +1,30 @@
 import React from 'react'
-import { View, Text } from 'react-native'
 import { TabNavigator } from 'react-navigation'
 
 import Home from './screens/home/home'
 import Parked from './screens/parked/parked'
+import History from './screens/history/history'
 
 export default class Navigation extends React.Component {
 
-	getNavigator() {
-		return TabNavigator({
-			'Home': { screen: Home },
-			'Parked': { screen: Parked }
-		}, {
-				swipeEnabled: true
-			})
-	}
+  setScreen(component) {
+    return {
+      screen: component, navigationOptions: { tabBarVisible: false }
+    }
+  }
 
-	render() {
-		const Navigator = this.getNavigator()
-		return <Navigator />
-	}
+  getNavigator() {
+    return TabNavigator({
+      'Home': this.setScreen(Home),
+      'Parked': this.setScreen(Parked),
+      'History': this.setScreen(History)
+    }, {
+        swipeEnabled: true
+      })
+  }
+
+  render() {
+    const Navigator = this.getNavigator()
+    return <Navigator />
+  }
 }
