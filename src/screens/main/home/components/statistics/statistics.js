@@ -1,6 +1,6 @@
 import React from 'react'
 import StatisticsView from './statisticsView'
-import StatisticsCore from '../../../../core/statistics/statisticsCore'
+import StatisticsCore from '../../../../../core/statistics/statisticsCore'
 
 export default class Statistics extends React.Component {
 

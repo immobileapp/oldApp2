@@ -73,7 +73,7 @@ export default class Parked extends React.Component {
 
 	handleLeave() {
 		this.core.leave(this.state.parked)
-		this.props.navigation.navigate('Home')
+		this.props.navigation.navigate('Main')
 	}
 
 	render() {

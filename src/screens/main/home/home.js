@@ -1,11 +1,12 @@
 import React from 'react'
 import HomeView from './homeView'
-import ParkingCore from '../../core/parking/parkingCore'
+import ParkingCore from '../../../core/parking/parkingCore'
 
 export default class Home extends React.Component {
 
 	static navigationOptions = {
-		tabBarVisible: false
+		tabBarVisible: false,
+		header: null
 	}
 
 	state = {}

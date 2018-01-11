@@ -1,6 +1,6 @@
 import { StyleSheet } from 'react-native'
-import dimensions from '../../../assets/utils/convertedDimensions'
-import colors from '../../../assets/values/colors'
+import dimensions from '../../../../assets/utils/convertedDimensions'
+import colors from '../../../../assets/values/colors'
 
 const { 
 	parkButtonWidth, 

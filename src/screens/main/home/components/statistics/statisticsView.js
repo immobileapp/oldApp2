@@ -1,7 +1,7 @@
 import React from 'react'
 import { View, Image, Text } from 'react-native'
 
-import genericStyle from '../../../../genericStyle'
+import genericStyle from '../../../../../genericStyle'
 import style from '../../homeStyle'
 
 export default class StatisticsView extends React.Component {
@@ -22,7 +22,7 @@ export default class StatisticsView extends React.Component {
 					<View style={ style.inf }>
 						<Image 
 							style={ style.statsIcon }
-							source={ require('../../../../../assets/footage/watch.png') }
+							source={ require('../../../../../../assets/footage/watch.png') }
 						/>
 						<Text style={ style.statsText }>
 							{ this.props.time && this.getHours() }
@@ -31,7 +31,7 @@ export default class StatisticsView extends React.Component {
 					<View style={ style.inf }>
 						<Image 
 							style={ style.statsIcon }
-							source={ require('../../../../../assets/footage/coin.png') }
+							source={ require('../../../../../../assets/footage/coin.png') }
 						/>
 						<Text style={ style.statsText }>
 							{ this.props.money }

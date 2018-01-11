@@ -1,9 +1,9 @@
 import React from 'react'
 import { View, Text, TouchableOpacity } from 'react-native'
-import ChangeIcon from '../../../../assets/footage/changeIcon'
+import ChangeIcon from '../../../../../assets/footage/changeIcon'
 
 import style from '../homeStyle'
-import genericStyle from '../../../genericStyle'
+import genericStyle from '../../../../genericStyle'
 
 export default class CarSelect extends React.Component {
 	render() {
