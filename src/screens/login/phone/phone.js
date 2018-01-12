@@ -7,7 +7,13 @@ export default class Phone extends React.Component {
 		tabBarVisible: false
 	}
 
+	state = { phone: '' }
+
 	render() {
-		return <PhoneView/>
+		return (
+			<PhoneView
+				onChange={ phone => this.setState({ phone }) }
+			/>
+		)
 	}
 }
