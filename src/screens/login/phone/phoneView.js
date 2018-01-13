@@ -5,6 +5,7 @@ import genericStyle from '../../../genericStyle'
 
 import RedBackground from '../../../components/redBackground/redBackground'
 import Input from '../../../components/input/input'
+import ArrowButton from '../../../components/arrowButton/arrowButton'
 
 export default class PhoneView extends React.Component {
 	render() {
@@ -14,9 +15,15 @@ export default class PhoneView extends React.Component {
 					color="white"
 					placeholder="Telefone"
 					keyboardType="phone-pad"
-					value={ this.state.phone }
+					value={ this.props.phone }
 					onChange={ this.props.onChange }
 				/>
+				<ArrowButton 
+					arrow="right"
+					onPress={ this.props.proceed }
+				>
+					CONTINUAR
+				</ArrowButton>
 			</RedBackground>
 		)
 	}

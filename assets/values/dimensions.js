@@ -6,7 +6,8 @@ const widthDimensions = {
 	backIconWidth: 16,
 	backIconTraceWidth: 2,
 	sideMargin: 32,
-	inputHorizontalPadding: 16
+	inputHorizontalPadding: 16,
+	arrowButtonPadding: 16
 },
 heightDimensions = {
 	fullHeight: 736,
