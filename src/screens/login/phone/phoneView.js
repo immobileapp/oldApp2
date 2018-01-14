@@ -31,7 +31,6 @@ export default class PhoneView extends React.Component {
 						vertically="bottom"
 					>
 						<ArrowButton 
-							style={{ alignSelf: 'flex-end' }}
 							arrow="right"
 							onPress={ this.props.proceed }
 						>

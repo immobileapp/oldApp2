@@ -15,9 +15,13 @@ export default class Phone extends React.Component {
 	proceed() {
 		let { length } = this.state.phone
 
-		length == 15
-			? this.props.navigation.navigate('Confirmation')
+		length == 14
+			? this.handleAuth()
 			: this.handleWrongPhone()
+	}
+
+	handleAuth() {
+		this.props.navigation.navigate('Confirmation')
 	}
 
 	handleWrongPhone() {

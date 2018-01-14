@@ -3,8 +3,10 @@ import { View } from 'react-native'
 
 export default class Aligner extends React.Component {
 
-	style = {
-		flex: 1
+	state = {
+		style: {
+			flex: 1
+		}
 	}
 
 	alignmentsHorizontally = {
@@ -19,12 +21,18 @@ export default class Aligner extends React.Component {
 		'center': 'center'
 	}
 
+	componentWillMount() {
+		this.setState({
+			style: this.getStyle()
+		})
+	}
+
 	getStyle() {
 		let { horizontally, vertically, alignIn } = this.props,
-			aligner = this.style
+			aligner = this.state.style,
+			{ align, justify } = this.getAlignments(alignIn, vertically, horizontally)
 
-		aligner['flexDirection'] = alignIn
-		let { align, justify } = this.getAlignments(alignIn, vertically, horizontally)
+		if(alignIn) aligner['flexDirection'] = alignIn
 
 		aligner['alignItems'] = this.alignmentsHorizontally[align]
 		aligner['justifyContent'] = this.alignmentsVertically[justify]
@@ -46,7 +54,7 @@ export default class Aligner extends React.Component {
 
 	render() {
 		return (
-			<View style={ this.getStyle() }>
+			<View style={ this.state.style }>
 				{ this.props.children }
 			</View>
 		)
