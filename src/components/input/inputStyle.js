@@ -6,7 +6,7 @@ const { inputHorizontalPadding } = dimensions
 
 const style = StyleSheet.create({
 	inputWrapper: {
-		width: '80%',
+		width: '100%',
 		borderStyle: 'solid',
 		borderBottomWidth: 1,
 		paddingHorizontal: inputHorizontalPadding

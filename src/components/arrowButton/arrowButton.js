@@ -18,7 +18,8 @@ export default class ArrowButton extends React.Component {
 
 	render() {
 		return (
-			<TouchableHighlight 
+			<TouchableHighlight
+				style={ this.props.style }
 				onPress={ this.props.onPress }
 				underlayColor="rgba(255,255,255,0.26)"
 				activeOpacity={ 0.26 }
