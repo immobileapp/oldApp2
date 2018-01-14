@@ -25,10 +25,23 @@ export default class Phone extends React.Component {
 		Alert.alert('Ops', error.getMessage())
 	}
 
+	handlePhoneChange(phone) {
+		this.verifyPhone(phone) &&
+			this.setState({ phone })
+	}
+
+	verifyPhone(phone) {
+		let { length } = phone,
+			last = phone[length - 1]
+
+		return (length >= 3 && !isNaN(last))
+	}
+
 	render() {
 		return (
 			<PhoneView
-				onChange={ phone => this.setState({ phone }) }
+				{ ...this.state }
+				onChange={ phone => this.handlePhoneChange(phone) }
 				proceed={ () => this.proceed() }
 			/>
 		)

@@ -14,6 +14,7 @@ export default class PhoneView extends React.Component {
 				<Input
 					color="white"
 					placeholder="Telefone"
+					maxLength={ 14 }
 					keyboardType="phone-pad"
 					value={ this.props.phone }
 					onChange={ this.props.onChange }
