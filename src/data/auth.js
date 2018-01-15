@@ -1,7 +1,7 @@
 import firebase from 'react-native-firebase'
 import FirebaseError from './error'
 
-export default class Auth {
+class Auth {
 
 	auth = firebase.auth()
 
@@ -35,3 +35,5 @@ export default class Auth {
 		return this.auth.signOut()
 	}
 }
+
+export default new Auth()

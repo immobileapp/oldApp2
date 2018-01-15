@@ -12,8 +12,8 @@ import com.facebook.soloader.SoLoader;
 import com.google.firebase.database.FirebaseDatabase;
 
 import io.invertase.firebase.RNFirebasePackage;
-import io.invertase.firebase.database.RNFirebaseDatabasePackage;
 import io.invertase.firebase.firestore.RNFirebaseFirestorePackage;
+import io.invertase.firebase.auth.RNFirebaseAuthPackage;
 
 import java.util.Arrays;
 import java.util.List;
@@ -33,8 +33,8 @@ public class MainApplication extends Application implements ReactApplication {
             new ReactNativePushNotificationPackage(),
             new SvgPackage(),
             new RNFirebasePackage(),
-            new RNFirebaseDatabasePackage(),
-            new RNFirebaseFirestorePackage()
+            new RNFirebaseFirestorePackage(),
+            new RNFirebaseAuthPackage()
       );
     }
 
